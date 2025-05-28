@@ -15,16 +15,6 @@ A Python implementation of the problem from Peter Linz's textbook:
 - `turing.py` - Turing machine implementations  
 - `turing-test.py` - Equivalence testing and performance comparison
 
-## Usage
-
-```python
-from turing_test import Test
-
-test = Test()
-test.equivalence()  # Random testing for equivalent behavior
-test.runtime()      # Performance comparison
-```
-
 ## Testing Note
 
 The equivalence check runs 10,000 random inputs to give a loose feeling of equivalence between the machines. This is **not a formal proof** - just empirical validation that both implementations behave similarly on test cases.
