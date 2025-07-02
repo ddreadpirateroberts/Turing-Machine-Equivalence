@@ -20,19 +20,13 @@ class Test:
                                initial_state="q0",
                                accept_state="qf")
 
-        initialize = {("reject", x, "_"): ("reject", x, self.standard.initial_state, Motion.S, Motion.S)
-                      for x in self.standard.tape_alphabet}
 
-        two_tape_transitions = {("reject", "a", "q0"): ("reject", "a", "q1", Motion.R, Motion.S),
-                                ("reject", "b", "q0"): ("accept", "b", "qf", Motion.L, Motion.S),
-                                ("reject", "_", "q0"): ("accept", "_", "qf", Motion.L, Motion.S),
-                                ("reject", "a", "q1"): ("reject", "a", "q1", Motion.R, Motion.S),
-                                ("reject", "_", "q1"): ("accept", "_", "qf", Motion.L, Motion.S)}
+        two_tape_transitions = convert_transitions(self.standard)
 
         self.multitape = MultitapeTuring(states={"reject", "accept"},
                                          input_alphabet={"a", "b"},
                                          tape_alphabet={"a", "b", "_"}.union(self.standard.states),
-                                         transition_funcs=initialize|two_tape_transitions,
+                                         transition_funcs=two_tape_transitions,
                                          initial_state="reject",
                                          accept_state="accept")
 
